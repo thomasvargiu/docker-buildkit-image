@@ -7,7 +7,10 @@ FROM docker/buildx-bin:${BUILDX_VERSION} as buildx-bin
 FROM docker:${DOCKER_VERSION}
 ARG COMPOSE_VERSION=2.2.3
 ARG COMPOSE_SWITCH_VERSION=1.0.4
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 
+RUN echo "Running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 RUN apk add --no-cache \
     curl \
     make \
