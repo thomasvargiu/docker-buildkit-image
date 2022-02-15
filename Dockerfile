@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.3
-ARG DOCKER_VERSION=latest
+ARG DOCKER_VERSION=20.10.12
 ARG BUILDX_VERSION=v0.7
 
 FROM docker/buildx-bin:${BUILDX_VERSION} as buildx-bin
@@ -7,8 +7,6 @@ FROM docker/buildx-bin:${BUILDX_VERSION} as buildx-bin
 FROM docker:${DOCKER_VERSION}
 ARG COMPOSE_VERSION=2.2.3
 ARG COMPOSE_SWITCH_VERSION=1.0.4
-ARG TARGETPLATFORM
-ENV TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
 
 RUN apk add --no-cache \
     curl \
